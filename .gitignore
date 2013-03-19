@@ -2,6 +2,7 @@
 *.rbc
 .bundle
 .config
+.idea/
 atlassian-ide-plugin.xml
 coverage
 InstalledFiles
