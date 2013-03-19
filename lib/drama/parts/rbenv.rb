@@ -1,33 +1,39 @@
 class RbEnv < Drama::Part
-  def act(user: user)
+  def play(user: user)
 
-    #if remote_os.osx?
-      brew formula: 'git', state: :installed, update: true
-      brew formula: 'rbenv', state: :installed
-      brew formula: 'ruby-build', state: :installed
+    if host.env.operating_system == :darwin
+      host.brew formula: 'git', state: :installed, update: true
+      host.brew formula: 'rbenv', state: :installed
+      host.brew formula: 'ruby-build', state: :installed
       return
-    #end
+    end
 
-    profile_file = # if remote_os.ubuntu?
+    profile_file = if host.env.distribution == :ubuntu
       '~/.profile'
-    #elsif remote_shell.zsh?
-    #  '~/.zshrc'
-    #else
-    #  '~/.bash_profile'
-    #end
+    elsif host.env.shell == :zsh
+      '~/.zshrc'
+    else
+      '~/.bash_profile'
+    end
 
     rbenv_home = "/home/#{user}/.rbenv"
 
     # git
-    apt package: 'git', state: :installed, update_cache: true
+    case host.env.distribution
+    when :ubuntu
+      host.apt package: 'git', update_cache: true
+    when :centos
+      host.yum package: 'git', update_cache: true
+    end
 
     # rbenv
-    #git repo: 'git://github.com/sstephenson/rbenv.git', dest: rbenv_home
-    #shell %[echo 'export PATH="#{rbenv_home}/bin:$PATH"' >> #{profile_file}]
-    #shell %[echo 'eval "$(rbenv init -)"' >> #{profile_file}]
+    host.git repository: 'git://github.com/sstephenson/rbenv.git',
+      destination: rbenv_home
+    host.shell command: %[echo 'export PATH="#{rbenv_home}/bin:$PATH"' >> #{profile_file}]
+    host.shell command: %[echo 'eval "$(rbenv init -)"' >> #{profile_file}]
 
     # ruby-build
-    #git repo: 'git://github.com/sstephenson/ruby-build.git',
-    #  dest: "#{rbenv_home}/plugins/ruby-build"
+    host.git repository: 'git://github.com/sstephenson/ruby-build.git',
+      destination: "#{rbenv_home}/plugins/ruby-build"
   end
 end

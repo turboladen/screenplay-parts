@@ -1,5 +1,5 @@
 class Epel < Drama::Part
-  def act(os_version: 5, arch: 'x86_64')
+  def play(os_version: 5, arch: 'x86_64')
     rpm_version = os_version == 5 ? '5-4' : '6-8'
     rpm_destination = "/tmp/epel-release-#{rpm_version}.noarch.rpm"
     rpm_source = "http://dl.fedoraproject.org/pub/epel/#{os_version}/#{arch}/epel-release-#{rpm_version}.noarch.rpm"
