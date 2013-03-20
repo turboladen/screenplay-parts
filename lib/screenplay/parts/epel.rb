@@ -1,4 +1,4 @@
-class Epel < Drama::Part
+class Epel < Screenplay::Part
   def play(os_version: 5, arch: 'x86_64')
     rpm_version = os_version == 5 ? '5-4' : '6-8'
     rpm_destination = "/tmp/epel-release-#{rpm_version}.noarch.rpm"

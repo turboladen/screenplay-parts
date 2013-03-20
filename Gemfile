@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 gemspec
 
-gem 'drama', git: 'git://github.com/turboladen/drama.git'
+gem 'screenplay', git: 'git://github.com/turboladen/screenplay.git'

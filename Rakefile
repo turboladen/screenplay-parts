@@ -6,7 +6,7 @@ require 'yard'
 
 YARD::Rake::YardocTask.new do |t|
   t.files = %w(lib/**/*.rb - History.md)
-  t.options = %w(--title drama Documentation (#{Drama::VERSION}))
+  t.options = %W(--title screenplay-parts Documentation (#{Screenplay::Parts::VERSION}))
   t.options += %w(--main README.md)
 end
 

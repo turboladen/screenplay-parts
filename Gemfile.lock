@@ -1,8 +1,8 @@
 GIT
-  remote: git://github.com/turboladen/drama.git
-  revision: 4c53ccc43fe86e1ebd3eb16c9c8383d9868ad5e1
+  remote: git://github.com/turboladen/screenplay.git
+  revision: 97a7085ab3a67c5a9dd4572871171a9f5209c762
   specs:
-    drama (0.1.0)
+    screenplay (0.1.0)
       blockenspiel
       colorize
       highline
@@ -12,8 +12,8 @@ GIT
 PATH
   remote: .
   specs:
-    drama-parts (0.1.0)
-      drama
+    screenplay-parts (0.1.0)
+      screenplay
 
 GEM
   remote: https://rubygems.org/
@@ -54,10 +54,10 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (>= 1.0.1)
-  drama!
-  drama-parts!
   rake
   redcarpet
   rspec (>= 2.12.0)
+  screenplay!
+  screenplay-parts!
   simplecov
   yard (>= 0.7.2)

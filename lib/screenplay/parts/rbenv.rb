@@ -1,4 +1,4 @@
-class RbEnv < Drama::Part
+class RbEnv < Screenplay::Part
   def play(user: user, binary: '/usr/bin/env rbenv', ruby_version: nil, remove: false)
     if remove
       remove_rvm(user)
